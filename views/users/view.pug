@@ -1,0 +1,11 @@
+extends ../layouts/common
+block content
+	h1 Personal Information
+	a(href = '/users', class = 'btn btn-success') Back
+	p
+		b User: 
+		span id:  
+		span= user.id 
+		span &nbsp
+		span name: 
+		span= user.name

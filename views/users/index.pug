@@ -1,0 +1,14 @@
+extends ../layouts/common
+block content
+	h1 List_MyFriend For Me
+	a(href="/users/create") New
+	form(action = '/users/search' method = 'GET', class = 'd-flex')
+		input(type = 'text' name = 'q')
+		button(class = 'btn btn-sm btn-success ml-1') search
+	ul
+		each user in users
+			li
+				span= user.name
+				span &nbsp
+				a(href="/users/"+ user.id) View
+		
