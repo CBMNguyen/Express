@@ -1,8 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var short_id = require('shortid');
 
 var userRoute = require('./route/user.route');
+var authRoute = require('./route/auth.route');
 
 var app = express();
 
@@ -10,7 +12,14 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({extented: true}));
+
+app.use(cookieParser());
+
+app.use('/users', userRoute);
+
+app.use('/auth', authRoute);
 
 app.use(express.static('public'));
 
@@ -27,8 +36,6 @@ var port = 8080;
 app.get('/', function(req, res){
 	res.send('Welcome Back!<a href = "/users">Users</a>');
 });
-
-app.use('/users', userRoute);
 
 app.listen(port, function(){
 	console.log('Server listenning on port '+ port);
