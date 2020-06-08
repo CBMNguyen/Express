@@ -30,23 +30,6 @@ module.exports.get  = function(req, res){
 
 module.exports.postcreate = function(req, res){
 	req.body.id = short_id.generate();
-	var errors = [];
-	if(!req.body.name){
-		errors.push('Name is require.')
-	}
-
-	if(!req.body.phone){
-		errors.push('Phone is require.')	
-	}
-
-	if(errors.length){
-		res.render('users/create',{
-			errors: errors,
-			values: req.body
-		})
-		return;
-	}
-
 	db.get('users').push(req.body).write()
 	res.redirect('/users');
 }
