@@ -5,10 +5,16 @@ block content
 		each error in errors
 			.alert.alert-danger= error
 
-	form(action = "/users/create" method = "POST") 
-		label(for="name") Name 
-		input#name.ml-1.form-control(name = "name", type = "text", value = values ? values.name : '')
+	form(action = "/users/create" method = "POST", enctype= "multipart/form-data") 
+		.form-group
+			label(for="name") Name 
+			input#name.ml-1.form-control(name = "name", type = "text", value = values ? values.name : '')
 
-		label(for="phone") Phone
-		input#phone.ml-1.form-control(name = "phone", type = "text", value = values ? values.phone : '')
-		button.mt-2.btn.btn-primary.ml-1 Create
+		.form-group
+			label(for="phone") Phone
+			input#phone.ml-1.form-control(name = "phone", type = "text", value = values ? values.phone : '')
+
+		.form-group
+			label(for="avatar") Avatar
+			input#avatar.ml-1.form-control-file(name = "avatar", type = "file")
+			button.mt-2.btn.btn-primary.ml-1 Create

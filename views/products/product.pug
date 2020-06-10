@@ -1,0 +1,37 @@
+extend ../layouts/common.pug
+block content
+	.container
+		h2.pt-5 Products
+		.d-flex.align-item-center
+			form.ml-auto(action = '/users/search' method = 'GET', class="d-flex")
+				input(type = 'text' name = 'q')
+				button(class = 'btn btn-success ml-1') search
+		.row
+			each product in products
+				.col-sm-6.col-md-4.col-lg-3
+					.card.mb-4(style='width=250px')
+						img.card-img-top(src='https://loremflickr.com/320/240/dog', alt='Card image', style='width=250px')
+						.card-body
+							h4.card-title= product.name
+							p.card-text Some example text.Some example text.
+							a.btn.btn-primary(href='#') See Profile
+		.d-flex
+			ul.pagination.ml-auto
+				li.page-item
+					a.page-link(href='/product?'+ 'page=' + pagePrevious) Previous
+				li.page-item
+					a.page-link(href='/product?'+ 'page=' + 1) 1
+				li.page-item
+					a.page-link(href='/product?'+ 'page=' + 2) 2
+				li.page-item
+					a.page-link(href='/product?'+ 'page=' + 3) 3
+				li.page-item
+					a.page-link(href='/product?'+ 'page=' + pageNext) Next
+
+		  
+		 
+
+				
+				
+	    
+ 
