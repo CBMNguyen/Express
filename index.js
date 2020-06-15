@@ -28,13 +28,11 @@ app.use(bodyParser.urlencoded({extented: true}));
 
 app.use(cookieParser(process.env.SESSION_SECRET));
 
-app.use(csurf({cookie: true}));
-
 app.use('/users',authMiddleware.requireAuth ,userRoute);
 
-app.use('/transfer', transferRoute);
+app.use('/transfer',csurf({cookie: true}), transferRoute);
 
-app.use('/product',cartMiddleware.cart , productRoute);
+app.use('/product',cartMiddleware, productRoute);
 
 app.use('/cart', cartRoute);
 

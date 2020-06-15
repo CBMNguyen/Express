@@ -2,7 +2,7 @@ var short_id = require('shortid');
 
 var db = require('../db');
 
-module.exports.cart = function(req, res, next){
+module.exports = function(req, res, next){
 	var sessionID = short_id.generate();
 	if(!req.signedCookies.sessionID){
 		res.cookie('sessionID', sessionID,{
