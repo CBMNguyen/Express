@@ -8,7 +8,7 @@ var authMiddleware = require('../middleware/auth.middleware')
 var router = express.Router();
 var upload = multer({ dest: './public/uploads/' });
 
-router.get('/',authMiddleware.requireAuth, controller.index);
+router.get('/', controller.index);
 
 router.get('/search', controller.search);
 

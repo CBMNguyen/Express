@@ -6,6 +6,7 @@ block content
 			.alert.alert-danger= error
 
 	form(action = "/auth/login" method = "POST") 
+		input(type="hidden", name="_csrf", value=csrfToken)
 		label(for="email") Email 
 		input#email.ml-1.form-control(name = "email", type = "email", value = values ? values.email : '')
 

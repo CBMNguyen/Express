@@ -15,6 +15,8 @@ module.exports.product = function(req, res){
 		}
 		
 	var pageNext = page + 1;
+	var sessionID = req.signedCookies.sessionID;
+	res.locals.count = db.get("sessions").find({ id: sessionID }).get("cart").size().value();
 
 	res.render('products/product',{
 		// C1 products: db.get('products').value().slice(start, end),
