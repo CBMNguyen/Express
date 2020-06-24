@@ -1,4 +1,4 @@
-var db = require('../db');
+	var db = require('../db');
 
 module.exports.product = function(req, res){
 	var page = parseInt(req.query.page) || 1;

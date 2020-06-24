@@ -15,7 +15,7 @@ var authMiddleware = require('./middleware/auth.middleware');
 var cartMiddleware = require('./middleware/cart.middleware');
 
 var app = express();
-var port = 8080;
+var port = 8081;
 
 app.set('view engine', 'pug');
 app.set('views', './views');
