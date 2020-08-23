@@ -14,9 +14,14 @@ module.exports.product = function(req, res){
 			pagePrevious = page - 1;
 		}
 		
-	var pageNext = page + 1;
-	var sessionID = req.signedCookies.sessionID;
-	res.locals.count = db.get("sessions").find({ id: sessionID }).get("cart").size().value();
+	var pageNext;
+	if(page === Math.floor(db.get("products").value().length / perPage) + 1){
+		pageNext = Math.floor(db.get("products").value().length / perPage) + 1;
+	}else{
+		pageNext = page + 1;
+	}
+
+	console.log(Math.floor(db.get("products").value().length / perPage), parseInt(req.query.page));
 
 	res.render('products/product',{
 		// C1 products: db.get('products').value().slice(start, end),

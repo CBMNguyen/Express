@@ -9,6 +9,23 @@ module.exports.postLogin = function(req, res, next){
 	var Email = req.body.email;
 	var password = req.body.password;
 
+	var errors = [];
+	if(!Email){
+		errors.push('Email is require.')
+	}
+
+	if(!password){
+		errors.push('Password is require.')	
+	}
+
+	if(errors.length){
+		res.render('auth/login',{
+			errors: errors,
+			values: req.body
+		})
+		return;
+	}
+
 	var user = db.get('users').find({email: Email}).value();
 	if(!user){
 		res.render('auth/login', {

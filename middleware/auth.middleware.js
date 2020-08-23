@@ -12,5 +12,7 @@ module.exports.requireAuth = function(req, res, next){
 		return;
 	}
 	res.locals.user=user;
+	var sessionID = req.signedCookies.sessionID;
+	res.locals.count = db.get("sessions").find({ id: sessionID }).get("cart").size().value();
 	next();
 };
